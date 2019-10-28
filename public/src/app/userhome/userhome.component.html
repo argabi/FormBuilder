@@ -1,0 +1,35 @@
+<app-nav> </app-nav>
+
+<div class="left">
+  <a mat-raised-button class="formbtn" color="accent" style="color: white;" [routerLink]="['/user']"> <mat-icon class="example-icon" aria-hidden="false"
+    aria-label="Example user note_add icon">note_add</mat-icon>Create Form</a>
+</div>
+<div class="card-container">
+    <div *ngFor="let form of forms" >
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{form.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="../../assets/img/formhead.jpg" alt="form">
+    <mat-card-content>
+      <p>
+        {{form.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-mini-fab class="view" [routerLink]="['/viewall',form._id]" aria-label="Example icon-button with a insert_chart icon">
+          <mat-icon>insert_chart  </mat-icon></button>
+        <button mat-mini-fab color="primary"  [routerLink]="['/view',form._id]" aria-label="Example icon-button with a visibility icon">
+          <mat-icon>visibility</mat-icon></button>
+        <button mat-mini-fab color="warn"  (click)="delete(form._id)" aria-label="Example icon-button with a delete icon">
+          <mat-icon>delete</mat-icon></button>
+      <!-- <button mat-raised-button class="view" [routerLink]="['/viewall',form._id]"  >Responses</button> -->
+      <!-- <button mat-raised-button color="primary"  [routerLink]="['/view',form._id]">View</button> <span class="spacer"></span>
+      <button mat-raised-button color="warn"  (click)="delete(form._id)">Delete</button> -->
+    </mat-card-actions>
+   </mat-card>
+</div>
+
+</div>

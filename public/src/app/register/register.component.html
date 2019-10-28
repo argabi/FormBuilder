@@ -1,0 +1,48 @@
+<img class="img" src="../../assets/img/img-03.png" alt="">
+<mat-card class="wrapper">
+  <div class="right">
+      <h3>Join Us</h3>
+      <hr>
+    <form [formGroup]="registerForm">
+        <mat-form-field>
+            <input  matInput placeholder="E-mail" formControlName="email" type="email" id="exampleInputEmail1"
+              aria-describedby="emailHelp" required>
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+        <input matInput id="exampleInputUsername" aria-describedby="userHelp" formControlName="username" placeholder="Username" required>
+        <small id="userHelp" class="form-text text-muted"></small>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <input  matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+            formControlName="password" type="password" id="passwordInput"
+            aria-describedby="passHelp" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <small id="passHelp" class="form-text text-muted"></small>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+              formControlName="cpass" type="password"  id="CpasswordInput"
+              aria-describedby="CpassHelp" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <small id="passHelp" class="form-text text-muted"></small>
+          </mat-form-field>
+
+        <div class="action">
+          <button class="regbtn" mat-raised-button color="accent" (click)="register()">Register</button> 
+          </div>
+    </form>
+    <div class="log">
+        <p >Have an account? <a routerLink="/login" >Login</a></p> 
+    </div>
+  </div>
+</mat-card>

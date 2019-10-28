@@ -1,0 +1,28 @@
+<mat-card class="row2">
+  <img src="../../assets/img/user3.png" class="icon" alt="">
+  <h2>Log In</h2>
+  <hr>
+    <form [formGroup]="loginForm">
+        <mat-form-field>
+          <input  matInput placeholder="Enter your email" formControlName="email" type="email"  id="exampleInputEmail1"
+            aria-describedby="emailHelp" required>
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+            formControlName="password" type="password"  id="passwordInput"
+            aria-describedby="passHelp" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <small id="passHelp" class="form-text text-muted"></small>
+        </mat-form-field>
+        <br>
+        <div class="action">
+        <button class="loginbtn" mat-raised-button color="accent" (click)="login()">Log in</button> 
+        </div>
+        <p class="reg">New user? <a routerLink="/register" >Create an Account</a></p> 
+    </form>
+</mat-card>

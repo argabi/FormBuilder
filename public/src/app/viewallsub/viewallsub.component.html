@@ -1,0 +1,89 @@
+<app-nav> </app-nav>
+
+<mat-tab-group>
+  <mat-tab label="Responses">
+    <ng-template matTabContent>
+      <div class="text-center">
+        <h4> You have {{count}} Responses</h4>
+      </div>
+      <div class="list">
+        <ul>
+          <div *ngFor="let item of ans | paginate: { itemsPerPage: 1, currentPage: p } ">
+            <div class="row2">
+
+              <ul class="element">
+                <!-- <li *ngFor="let x of a; let j = index">
+                  {{j}}<b>{{x}}</b>
+                </li> -->
+                <div *ngFor="let a of item; let i = index">
+                  <p style="color: #D81B60; font-size: 15px; font-weight: bold; margin-left: 30px;margin-top: 20px;">
+                    {{a[0]}}<p>
+                      <ul>
+                        <li>
+                          {{a[1]}}
+                        </li>
+                      </ul>
+                </div>
+
+              </ul>
+            </div>
+          </div>
+        </ul>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Summary">
+    <ng-template matTabContent>
+      <div class="list">
+        <ul>
+          <div class="row2">
+            <ul class="element">
+              <li *ngFor="let dic of result; let j = index">
+
+                <div *ngIf="dic['type']=='radio' || dic['type']=='autocomplete' ;else other_content">
+
+
+                  <!-- <div *ngFor="let a of dic | keyvalue">
+                  <b>{{a.value}}</b>
+                  </div> -->
+                  <p style="color: #D81B60; font-size: 15px; font-weight: bold; margin-left: 30px;margin-top: 20px;">
+                    {{dic['qss']}}</p>
+
+                  <div class="bar-chart">
+                    <ul>
+                      <div *ngFor="let num of dic['values'] | keyvalue">
+                        <!-- {{num.key}}<li [attr.data-cp-size]="num.value">{{num.value}}</li> -->
+
+                        <p
+                          style="color: #D81B60; font-size: 15px; font-weight: bold; margin-left: 30px;margin-top: 20px;">
+                          {{num.key}}</p>
+                        <div class="contain">
+                          <div class="skills" [ngStyle]="setMyStyles(num.value,dic )">{{ percernt(num.value,dic)}}%
+                          </div>
+                        </div>
+
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+                <ng-template #other_content>
+                  <p style=" color:#D81B60;font-size: 15px; font-weight: bold; margin-left: 30px;margin-top: 20px;"> {{dic['qss']}}
+                  </p>
+                  <div class="textareashow">
+                    <div *ngFor="let text of dic['text'] | keyvalue">
+                      <p style=" color:black;font-size: 15px; font-weight: bold; margin-left: 30px;margin-top: 20px;">
+                        {{text.value}}</p>
+                    </div>
+                  </div>
+                </ng-template>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
